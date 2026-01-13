@@ -94,7 +94,7 @@ nav {
     /* We use linear-gradient to darken the image so text is readable */
     background: 
         linear-gradient(90deg, rgba(5,8,16,0.95) 0%, rgba(5,8,16,0.8) 40%, rgba(5,8,16,0.1) 100%),
-        url('assets/images/landing-mockup.png');
+        url('assets/images/landing-mockup.webp');
     
     background-size: cover;
     background-position: center;
