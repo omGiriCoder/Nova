@@ -1,0 +1,266 @@
+/* --- 1. VARIABLES & RESET --- */
+:root {
+    --bg-color: #050810;
+    --primary-gradient: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    --text-color: #ffffff;
+    --text-muted: #cbd5e1;
+    --card-bg: rgba(20, 25, 40, 0.6);
+    --border-color: rgba(255, 255, 255, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- 2. NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(5, 8, 16, 0.8); /* Darker background for readability */
+    backdrop-filter: blur(15px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.logo span { margin-left: 10px; }
+
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    background: var(--primary-gradient);
+    border-radius: 4px 12px 4px 12px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover { color: #a78bfa; }
+
+.btn-nav {
+    padding: 10px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    background: #2563eb;
+    transition: opacity 0.3s;
+}
+
+.btn-nav:hover { opacity: 0.9; }
+
+/* --- 3. HERO SECTION (UPDATED) --- */
+.hero {
+    height: 90vh; /* Full screen height */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    
+    /* BACKGROUND IMAGE LOGIC */
+    /* We use linear-gradient to darken the image so text is readable */
+    background: 
+        linear-gradient(90deg, rgba(5,8,16,0.95) 0%, rgba(5,8,16,0.8) 40%, rgba(5,8,16,0.1) 100%),
+        url('assets/images/landing-mockup.png');
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Optional: Adds a bottom fade to blend into the next section */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, var(--bg-color), transparent);
+}
+
+.hero-content {
+    max-width: 650px;
+    z-index: 2; /* Ensures text is above background */
+}
+
+h1 {
+    font-size: 3.8rem;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+.hero p {
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    font-size: 1.2rem;
+    max-width: 500px;
+}
+
+.cta-group {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary {
+    padding: 14px 32px;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+    transition: transform 0.2s;
+}
+
+.btn-primary:hover { transform: scale(1.05); }
+
+.btn-secondary {
+    padding: 14px 32px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s;
+}
+
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* --- 4. SECTIONS & GRID --- */
+.section-container {
+    padding: 60px 0;
+    background: var(--bg-color); /* Dark bg for the rest of the page */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    position: relative;
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--primary-gradient);
+    border-radius: 2px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 0 5%;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #8b5cf6;
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body { padding: 25px; }
+.card h3 { margin-bottom: 12px; font-size: 1.25rem; }
+.card p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* --- 5. FOOTER --- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 5%;
+    border-top: 1px solid var(--border-color);
+    background: #02040a;
+    color: var(--text-muted);
+}
+
+/* --- 6. MOBILE RESPONSIVENESS --- */
+@media (max-width: 900px) {
+    .grid-container { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 3rem; }
+}
+
+@media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero { 
+        text-align: center; 
+        justify-content: center; 
+        background-position: center left; /* Shift image on mobile */
+    }
+    .hero-content { margin: 0 auto; }
+    .cta-group { justify-content: center; }
+    h1 { font-size: 2.5rem; }
+    .grid-container { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 20px; }
+}
