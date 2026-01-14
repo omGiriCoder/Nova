@@ -28,8 +28,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    background: rgba(5, 8, 16, 0.8); /* Darker background for readability */
-    backdrop-filter: blur(15px);
+    background: rgba(5, 8, 16, 0.249); /* Darker background for readability */
+    backdrop-filter: blur(1px);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -471,5 +471,634 @@ footer .social-icons a:hover {
     
     .input-icon {
         left: 12px; /* Adjust icon position */
+    }
+}
+
+/* --- PREVIOUS VARIABLES (Ensure these exist) --- */
+:root {
+    --bg-color: #050810;
+    --primary-gradient: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    --text-color: #ffffff;
+    --text-muted: #cbd5e1;
+    --border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- PAGE LAYOUT & GRID --- */
+.page-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Info is narrower, Form is wider */
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* --- SHARED CARD STYLE (Glassmorphism) --- */
+.glass-card {
+    background: rgba(20, 25, 40, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(139, 92, 246, 0.3); /* Subtle purple border */
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add a glowing border effect on hover */
+.glass-card:hover {
+    border-color: rgba(139, 92, 246, 0.6);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
+}
+
+.glass-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.glass-card h3 i {
+    color: #8b5cf6;
+}
+
+/* --- LEFT COLUMN: INFO CARD --- */
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.icon-box {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-gradient);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.info-content p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.social-section {
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.social-section h4 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-buttons a {
+    width: 45px;
+    height: 45px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s;
+}
+
+.social-buttons a:hover {
+    background: var(--primary-gradient);
+    border-color: transparent;
+    transform: translateY(-3px);
+}
+
+/* --- RIGHT COLUMN: FORM --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+}
+
+.textarea-wrapper .input-icon {
+    top: 20px; /* Align icon to top for textarea */
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px 12px 12px 45px;
+    background: rgba(5, 8, 16, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input:focus, textarea:focus {
+    border-color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.05);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* --- MAP SECTION --- */
+.map-container {
+    height: 200px;
+    width: 100%;
+    position: relative;
+    padding: 0; /* Remove default padding for image */
+    display: flex;
+    align-items: center;
+}
+
+/* Placeholder Map Image with Purple Tint */
+.map-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg'); 
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3; /* Makes it dark */
+    filter: hue-rotate(240deg) invert(1); /* Makes it look cosmic/purple */
+    z-index: 0;
+}
+
+/* Gradient Overlay to match theme */
+.map-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(20, 25, 40, 0.9) 0%, rgba(20, 25, 40, 0.4) 100%);
+    z-index: 1;
+}
+
+.map-overlay-content {
+    position: relative;
+    z-index: 2;
+    padding-left: 40px;
+}
+
+.map-overlay-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.map-pin {
+    position: absolute;
+    right: 20%;
+    top: 40%;
+    z-index: 2;
+    font-size: 2rem;
+    color: #8b5cf6;
+    animation: bounce 2s infinite;
+    text-shadow: 0 0 20px #8b5cf6;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* --- MOBILE RESPONSIVENESS (Phone Fix) --- */
+
+@media (max-width: 768px) {
+    /* 1. Adjust the Global Wrapper */
+    .page-wrapper {
+        padding: 20px 15px; /* Less space on sides */
+    }
+
+    /* 2. Change Grid to 1 Column */
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stacks Info card on top of Form card */
+        gap: 20px;
+    }
+
+    /* 3. Adjust Heading Sizes */
+    .header-text h1 {
+        font-size: 2.2rem;
+        margin-top: 20px;
+    }
+
+    .header-text p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    /* 4. Optimize Cards for Small Screens */
+    .glass-card {
+        padding: 20px; /* Smaller internal padding */
+        border-radius: 15px;
+    }
+
+    /* 5. Fix Input Fields for Mobile */
+    input, textarea, select {
+        font-size: 16px; /* Prevents iPhone from auto-zooming on click */
+        padding: 12px 12px 12px 40px; /* Maintain space for icons */
+    }
+
+    .icon-box {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    /* 6. Map Section Adjustments */
+    .map-container {
+        height: auto;
+        min-height: 150px;
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .map-overlay-content {
+        padding-left: 0; /* Center text on mobile */
+    }
+
+    .map-pin {
+        display: none; /* Hide the floating pin on mobile to save space */
+    }
+
+    /* 7. Footer Adjustments */
+    footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 40px 20px;
+    }
+}
+
+/* --- BASE STYLES --- */
+:root {
+    --bg-color: #050810;
+    --primary-gradient: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    --text-color: #ffffff;
+    --text-muted: #cbd5e1;
+    --border-glow: rgba(139, 92, 246, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Cosmic Background */
+.auth-page {
+    background: 
+        radial-gradient(circle at top right, rgba(139, 92, 246, 0.2), transparent),
+        linear-gradient(rgba(5, 8, 16, 0.85), rgba(5, 8, 16, 0.85)),
+        url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2072&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- AUTH CONTAINER --- */
+.auth-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.auth-header p {
+    color: var(--text-muted);
+}
+
+/* --- GLASS CARD --- */
+.auth-card {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(20, 25, 40, 0.5);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glow);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.optional {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-left: 5px;
+}
+
+/* Input Styles */
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    background: rgba(10, 10, 20, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+/* --- BUTTONS --- */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-gradient);
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+}
+
+.switch-auth {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.switch-auth a {
+    color: #8b5cf6;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer-logo {
+    margin-top: 40px;
+    opacity: 0.8;
+}
+
+/* --- RESPONSIVE (PHONE) --- */
+@media (max-width: 600px) {
+    .auth-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .auth-card {
+        padding: 25px 20px;
+    }
+
+    input {
+        font-size: 16px; /* Best for mobile inputs */
+    }
+
+    .simple-footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+
+/* Footer Socials */
+.simple-footer {
+    padding: 30px 5%;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: var(--text-muted);
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #8b5cf6;
+}
+
+
+/* --- LOGIN SPECIFIC STYLES --- */
+
+/* Social Buttons */
+.social-auth-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.btn-social {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.btn-social.google {
+    background: white;
+    color: #1a1a1a;
+}
+
+.btn-social.phone {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.btn-social:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.btn-social.google:hover {
+    background: #f1f1f1;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--text-muted);
+}
+
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.divider span {
+    padding: 0 15px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+/* Auth Options (Remember Me / Forgot Pass) */
+.auth-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.85rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #8b5cf6;
+}
+
+.forgot-pass {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.forgot-pass:hover {
+    color: #8b5cf6;
+}
+
+/* --- RESPONSIVE FIXES --- */
+@media (max-width: 600px) {
+    .auth-options {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .btn-social {
+        font-size: 0.85rem;
     }
 }
