@@ -264,3 +264,212 @@ footer {
     .grid-container { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 20px; }
 }
+
+/* --- GLOBAL VARIABLES (Ensure these match your previous file) --- */
+:root {
+    --bg-color: #050810;
+    --primary-gradient: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    --text-color: #ffffff;
+    --text-muted: #cbd5e1;
+    --card-bg: rgba(20, 25, 40, 0.6);
+    --border-color: rgba(255, 255, 255, 0.15);
+    --glow-color: rgba(139, 92, 246, 0.5);
+}
+
+/* --- CONTACT PAGE SPECIFIC STYLES --- */
+
+/* 1. Background Setup */
+.contact-page {
+    /* Uses the same space background */
+    background: 
+        linear-gradient(rgba(5,8,16,0.8), rgba(5,8,16,0.8)),
+        url("assets/images/getInTouchBg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-section {
+    flex: 1; /* Pushes footer to bottom */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+/* 2. Header Text */
+.header-text {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-text h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3); /* Glow effect */
+}
+
+.header-text p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* 3. The Glowing Form Container */
+.form-container {
+    width: 90%; /* Changed from fixed width to percentage */
+    max-width: 550px; /* Keeps it looking good on desktop */
+    background: rgba(20, 25, 40, 0.5);
+    backdrop-filter: blur(1px);
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 0 50px rgba(139, 92, 246, 0.15), inset 0 0 20px rgba(139, 92, 246, 0.05);
+    margin: 0 auto; /* Centers the box */
+}
+
+/* 4. Form Groups & Labels */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group label i {
+    color: #8b5cf6; /* Purple icon color */
+}
+
+/* 5. Input Styling */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Icons inside the input box */
+.input-icon {
+    position: absolute;
+    left: 15px;
+    color: #64748b;
+    z-index: 1;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px 14px 14px 45px; /* Padding-left allows space for the icon */
+    background: rgba(10, 10, 20, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    appearance: none; /* Removes default browser styles for dropdowns */
+}
+
+input::placeholder {
+    color: #475569;
+}
+
+/* Focus State - Glows purple */
+input:focus, select:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+    background: rgba(139, 92, 246, 0.05);
+}
+
+/* Custom Arrow for Select Dropdown */
+.select-arrow {
+    position: absolute;
+    right: 15px;
+    color: #64748b;
+    pointer-events: none;
+}
+
+/* 6. Submit Button */
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6); /* Gradient */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); /* Blue glow */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.7);
+}
+
+/* 7. Footer Updates for Icons */
+footer .social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+footer .social-icons a {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #8b5cf6;
+}
+
+/* Responsive */
+/* Mobile Responsiveness for Contact Page */
+@media (max-width: 768px) {
+    
+    /* Adjust the main spacing */
+    .contact-section {
+        padding: 40px 15px; /* Smaller padding on sides */
+    }
+
+    /* Make the title smaller on phones */
+    .header-text h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    /* Adjust the form box for small screens */
+    .form-container {
+        width: 100%; /* Take full width of the container */
+        padding: 25px 20px; /* Reduce internal padding */
+    }
+
+    /* Stack the input labels nicely */
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    /* Adjust input font size to prevent zooming on iPhone */
+    input, select {
+        font-size: 16px; /* Prevents auto-zoom on iOS */
+        padding: 12px 12px 12px 40px;
+    }
+    
+    .input-icon {
+        left: 12px; /* Adjust icon position */
+    }
+}
